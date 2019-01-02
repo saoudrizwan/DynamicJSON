@@ -34,94 +34,82 @@ class DynamicJSONTests: XCTestCase {
 	
 	func test_data_initializer() {
 		let usersData = loadMockUsersData()
-		do {
-			let json = try JSON(usersData)
-			XCTAssert(json[0]?.id?.int == 1)
-			XCTAssert(json[0]?.username?.string == "Bret")
-			XCTAssert(json[0]?.address?.street?.string == "Kulas Light")
-			XCTAssert(json[0]?.address?.geo?.lat?.double == -37.3159)
-		} catch {
-			XCTFail(stringify(error))
-		}
+		let json = JSON(usersData)
+		XCTAssert(json[0]?.id?.int == 1)
+		XCTAssert(json[0]?.username?.string == "Bret")
+		XCTAssert(json[0]?.address?.street?.string == "Kulas Light")
+		XCTAssert(json[0]?.address?.geo?.lat?.double == -37.3159)
 	}
 	
 	func test_convert_json_to_data_and_compare() {
 		let usersData = loadMockUsersData()
-		do {
-			let json = try JSON(usersData)
-			let backToData = try json.data()
-			let backToJson = try JSON(backToData)
-			
-			XCTAssert(json == backToJson)
-		} catch {
-			XCTFail(stringify(error))
-		}
+		let json = JSON(usersData)
+		let backToData = json.data()
+		let backToJson = JSON(backToData)
+		
+		XCTAssert(json == backToJson)
 	}
 	
 	func test_comparable() {
 		let usersData = loadMockUsersData()
 		let postsData = loadMockPostsData()
-		do {
-			
-			// Data
-			
-			let users = try JSON(usersData)
-			let users2 = try JSON(usersData)
-			let posts = try JSON(postsData)
-			let posts2 = try JSON(postsData)
-			
-			XCTAssert(users == users2)
-			XCTAssert(posts == posts2)
-			XCTAssert(users != posts)
-			
-			let backToData = try users.data()
-			let backToJson = try JSON(backToData)
-			
-			XCTAssert(backToJson == users)
-			XCTAssert(backToJson != posts)
-			
-			// String
-			
-			let string1 = try JSON("string 1")
-			let string2 = try JSON("string 2")
-			let string1copy = try JSON("string 1")
-			XCTAssert(string1 != string2)
-			XCTAssert(string1 == string1copy)
-			
-			// Bool
-			
-			let bool1 = try JSON(true)
-			let bool2 = try JSON(false)
-			let bool1copy = try JSON(true)
-			XCTAssert(bool1 != bool2)
-			XCTAssert(bool1 == bool1copy)
-			
-			// Number
-			
-			let number1 = try JSON(1)
-			let number2 = try JSON(2)
-			let number1copy = try JSON(1)
-			XCTAssert(number1 != number2)
-			XCTAssert(number1 == number1copy)
-			
-			// Dictionary
-			
-			let dict1 = try JSON(["key1": "val1", "key2": 2])
-			let dict2 = try JSON(["im": "different"])
-			let dict1copy = try JSON(["key1": "val1", "key2": 2])
-			XCTAssert(dict1 != dict2)
-			XCTAssert(dict1 == dict1copy)
-			
-			// Array
-			
-			let arr1 = try JSON(["1", "2", "3", 4])
-			let arr2 = try JSON(["im", "different"])
-			let arr1copy = try JSON(["1", "2", "3", 4])
-			XCTAssert(arr1 != arr2)
-			XCTAssert(arr1 == arr1copy)
-		} catch {
-			XCTFail(stringify(error))
-		}
+		
+		// Data
+		
+		let users = JSON(usersData)
+		let users2 = JSON(usersData)
+		let posts = JSON(postsData)
+		let posts2 = JSON(postsData)
+		
+		XCTAssert(users == users2)
+		XCTAssert(posts == posts2)
+		XCTAssert(users != posts)
+		
+		let backToData = users.data()
+		let backToJson = JSON(backToData)
+		
+		XCTAssert(backToJson == users)
+		XCTAssert(backToJson != posts)
+		
+		// String
+		
+		let string1 = JSON("string 1")
+		let string2 = JSON("string 2")
+		let string1copy = JSON("string 1")
+		XCTAssert(string1 != string2)
+		XCTAssert(string1 == string1copy)
+		
+		// Bool
+		
+		let bool1 = JSON(true)
+		let bool2 = JSON(false)
+		let bool1copy = JSON(true)
+		XCTAssert(bool1 != bool2)
+		XCTAssert(bool1 == bool1copy)
+		
+		// Number
+		
+		let number1 = JSON(1)
+		let number2 = JSON(2)
+		let number1copy = JSON(1)
+		XCTAssert(number1 != number2)
+		XCTAssert(number1 == number1copy)
+		
+		// Dictionary
+		
+		let dict1 = JSON(["key1": "val1", "key2": 2])
+		let dict2 = JSON(["im": "different"])
+		let dict1copy = JSON(["key1": "val1", "key2": 2])
+		XCTAssert(dict1 != dict2)
+		XCTAssert(dict1 == dict1copy)
+		
+		// Array
+		
+		let arr1 = JSON(["1", "2", "3", 4])
+		let arr2 = JSON(["im", "different"])
+		let arr1copy = JSON(["1", "2", "3", 4])
+		XCTAssert(arr1 != arr2)
+		XCTAssert(arr1 == arr1copy)
 	}
 	
 	// MARK: Helpers

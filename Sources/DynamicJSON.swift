@@ -51,51 +51,32 @@ public enum JSON {
 	// MARK: Initializers
 	
 	public init(data: Data, options: JSONSerialization.ReadingOptions = []) throws {
-		do {
-			let object = try JSONSerialization.jsonObject(with: data, options: options)
-			self = try JSON(object)
-		} catch {
-			throw error
-		}
+		let object = try JSONSerialization.jsonObject(with: data, options: options)
+		self = JSON(object)
 	}
 	
-	public init(_ object: Any) throws {
+	public init(_ object: Any) {
 		if let data = object as? Data {
-			try self.init(data: data)
+			if let converted = try? JSON(data: data) {
+				self = converted
+			} else if let fragments = try? JSON(data: data, options: .allowFragments) {
+				self = fragments
+			} else {
+				self = JSON.null
+			}
 		} else if let dictionary = object as? [String: Any] {
-			var result = [String: JSON]()
-			for (key, value) in dictionary {
-				do {
-					let json = try JSON(value)
-					result[key] = json
-				} catch {
-					throw error
-				}
-			}
-			self = JSON.dictionary(result)
+			self = JSON.dictionary(dictionary.mapValues { JSON($0) })
 		} else if let array = object as? [Any] {
-			var result = [JSON]()
-			for element in array {
-				do {
-					let json = try JSON(element)
-					result.append(json)
-				} catch {
-					throw error
-				}
-			}
-			self = JSON.array(result)
+			self = JSON.array(array.map { JSON($0) })
 		} else if let string = object as? String {
 			self = JSON.string(string)
 		} else if let number = object as? NSNumber {
 			self = JSON.number(number)
 		} else if let bool = object as? Bool {
 			self = JSON.bool(bool)
-		} else if object is NSNull {
-			self = JSON.null
 		} else {
-			throw Error.invalidObject
+			self = JSON.null
 		}
-		
 	}
 	
 	// MARK: Accessors
@@ -176,8 +157,8 @@ public enum JSON {
 		}
 	}
 	
-	public func data(options: JSONSerialization.WritingOptions = []) throws -> Data {
-		return try JSONSerialization.data(withJSONObject: self.object, options: options)
+	public func data(options: JSONSerialization.WritingOptions = []) -> Data {
+		return (try? JSONSerialization.data(withJSONObject: self.object, options: options)) ?? Data()
 	}
 	
 }
@@ -215,12 +196,65 @@ extension JSON: Comparable {
 	}
 }
 
+// MARK: - ExpressibleByLiteral
+
+extension JSON: Swift.ExpressibleByDictionaryLiteral {
+	
+	public init(dictionaryLiteral elements: (String, Any)...) {
+		let dictionary = elements.reduce(into: [String: Any](), { $0[$1.0] = $1.1})
+		self.init(dictionary)
+	}
+}
+
+extension JSON: Swift.ExpressibleByArrayLiteral {
+	
+	public init(arrayLiteral elements: Any...) {
+		self.init(elements)
+	}
+}
+
+extension JSON: Swift.ExpressibleByStringLiteral {
+	
+	public init(stringLiteral value: StringLiteralType) {
+		self.init(value)
+	}
+	
+	public init(extendedGraphemeClusterLiteral value: StringLiteralType) {
+		self.init(value)
+	}
+	
+	public init(unicodeScalarLiteral value: StringLiteralType) {
+		self.init(value)
+	}
+}
+
+extension JSON: Swift.ExpressibleByFloatLiteral {
+	
+	public init(floatLiteral value: FloatLiteralType) {
+		self.init(value)
+	}
+}
+
+extension JSON: Swift.ExpressibleByIntegerLiteral {
+	
+	public init(integerLiteral value: IntegerLiteralType) {
+		self.init(value)
+	}
+}
+
+extension JSON: Swift.ExpressibleByBooleanLiteral {
+	
+	public init(booleanLiteral value: BooleanLiteralType) {
+		self.init(value)
+	}
+}
+
 // MARK: - Pretty Print
 
 extension JSON: Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
 	
 	public var description: String {
-		if let data = try? data(options: .prettyPrinted), let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []) {
+		if let jsonObject = try? JSONSerialization.jsonObject(with: data(options: .prettyPrinted), options: []) {
 			return String(describing: jsonObject)
 		}
 		return "nil"
