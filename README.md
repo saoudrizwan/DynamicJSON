@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/7799382/50580787-04871680-0e08-11e9-85cb-bd7e9482deb0.png" alt="DynamicJSON" />
+    <img src="https://user-images.githubusercontent.com/7799382/50580833-8aa35d00-0e08-11e9-8290-b257a73c8fc9.png" alt="DynamicJSON" />
 </p>
 
 <p align="center">
@@ -13,7 +13,7 @@
   • <a href="#usage">Usage</a>
   • <a href="#license">License</a>
 </p>
-
+<br>
 DynamicJSON is a **dynamically typed** parser for JSON built upon the new <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0195-dynamic-member-lookup.md" target="_blank">`@dynamicMemberLookup`</a> feature introduced by Chris Lattner in Swift 4.2. This allows us to access arbitrary object members which are resolved at runtime, allowing Swift to be as flexible as JavaScript when it comes to JSON.
 
 ### Before
