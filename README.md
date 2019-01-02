@@ -34,7 +34,7 @@ let username = JSON(data).user?.username?.string
 
 ## Installation
 
--   Installation for <a href="https://guides.cocoapods.org/using/using-cocoapods.html" target="_blank">CocoaPods</a>:
+-   <a href="https://guides.cocoapods.org/using/using-cocoapods.html" target="_blank">CocoaPods</a>:
 
 ```ruby
 pod 'DynamicJSON'
@@ -54,7 +54,7 @@ And `import DynamicJSON` in the files you'd like to use it.
 
 ### 1. Initialize 🐣
 
-Throw `Any`thing into a JSON object to get started
+Throw `Any`thing into a `JSON` object to get started
 
 ```swift
 let json = JSON(Data())
