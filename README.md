@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/7799382/50579331-f087e880-0df8-11e9-9286-c49998426202.png" alt="DynamicJSON" />
+    <img src="https://user-images.githubusercontent.com/7799382/50580787-04871680-0e08-11e9-85cb-bd7e9482deb0.png" alt="DynamicJSON" />
 </p>
 
 <p align="center">
@@ -14,12 +14,14 @@
   • <a href="#license">License</a>
 </p>
 
-DynamicJSON is a **dynamically typed** parser for JSON built upon the new <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0195-dynamic-member-lookup.md" target="_blank">`@dynamicMemberLookup`</a> feature introduced by Chris Lattner in Swift 4.2. This allows us to access arbitrary object members which are resolved at runtime, allowing Swift to be as flexible as Javascript when it comes to JSON.
+DynamicJSON is a **dynamically typed** parser for JSON built upon the new <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0195-dynamic-member-lookup.md" target="_blank">`@dynamicMemberLookup`</a> feature introduced by Chris Lattner in Swift 4.2. This allows us to access arbitrary object members which are resolved at runtime, allowing Swift to be as flexible as JavaScript when it comes to JSON.
 
 ### Before
 
 ```swift
-if let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], let user = jsonObject["user"] as? [String: Any], let username = user["username"] as? String {
+if let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+   let user = jsonObject["user"] as? [String: Any],
+   let username = user["username"] as? String {
 	// ...
 }
 ```
@@ -74,15 +76,15 @@ let user: JSON = [
 	"username": "Saoud",
 	"age": 21,
 	"address": [
-		"zip": "12345",
-		"city": "San Diego"
+	    "zip": "12345",
+	    "city": "San Diego"
 	]
 ]
 ```
 
 ### 2. Drill in ⛏
 
-Treat `JSON` objects like you're in JavaScript Land.
+Treat `JSON` objects like you're in JavaScript Land
 
 ```swift
 let dictionary = json.dictionary
@@ -129,7 +131,7 @@ let anyObject = json.object
 Convert to `Data`
 
 ```swift
-let data = try json.data() // optionally specify options...
+let data = json.data() // optionally specify options...
 ```
 
 ## License
