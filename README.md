@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/7799382/50580833-8aa35d00-0e08-11e9-8290-b257a73c8fc9.png" alt="DynamicJSON" />
+    <img src="https://user-images.githubusercontent.com/7799382/50582031-179fe380-0e14-11e9-9f16-bc8b8c69b41b.png" alt="DynamicJSON" />
 </p>
 <br>
 <p align="center">
