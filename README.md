@@ -145,3 +145,9 @@ DynamicJSON is in its infancy, but provides the barebones of a revolutionary new
 ## Questions?
 
 Contact me by email <a href="mailto:hello@saoudmr.com">hello@saoudmr.com</a>, or by twitter <a href="https://twitter.com/sdrzn" target="_blank">@sdrzn</a>. Please create an <a href="https://github.com/saoudrizwan/DynamicJSON/issues">issue</a> if you come across a bug or would like a feature to be added.
+
+## Notable Mentions
+
+* [Paul Hudson](https://www.hackingwithswift.com/)'s wonderful literature over `@dynamicMemberLookup`
+* Chris Lattner's Swift Evolution Propsal [SE-0195](https://github.com/apple/swift-evolution/blob/master/proposals/0195-dynamic-member-lookup.md)
+* [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) for giving me a better idea of what the community wants out of a JSON parser
