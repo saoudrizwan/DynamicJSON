@@ -10,12 +10,6 @@ import Foundation
 @dynamicMemberLookup
 public enum JSON {
 	
-	// MARK: Error
-	
-	public enum Error: Swift.Error {
-		case invalidObject
-	}
-	
 	// MARK: Cases
 	
 	case dictionary(Dictionary<String, JSON>)
@@ -257,7 +251,7 @@ extension JSON: Swift.CustomStringConvertible, Swift.CustomDebugStringConvertibl
 		if let jsonObject = try? JSONSerialization.jsonObject(with: data(options: .prettyPrinted), options: []) {
 			return String(describing: jsonObject)
 		}
-		return "nil"
+		return ""
 	}
 	
 	public var debugDescription: String {
