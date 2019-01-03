@@ -140,10 +140,7 @@ DynamicJSON is heavily inspired by SwiftyJSON but is inherently simpler to use t
 
 **SwiftyJSON**
 ```swift
-let json = JSON(data: dataFromNetworking)
-if let userName = json[0]["user"]["name"].string {
-	// ...
-}
+let userName = JSON(data: dataFromNetworking)[0]["user"]["name"].string
 ```
 **DynamicJSON**
 ```swift
