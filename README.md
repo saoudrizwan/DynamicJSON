@@ -137,6 +137,7 @@ let data = json.data() // optionally specify options...
 ## SwiftyJSON
 
 DynamicJSON is heavily inspired by SwiftyJSON but is inherently simpler to use thanks to some of Swift's newest evolutions. I've used SwiftyJSON in almost everyone of my projects, so I know how important it can be to easily manipulate JSON data especially during early stages of development. DynamicJSON simply makes the job easier.
+
 **SwiftyJSON**
 ```swift
 let json = JSON(data: dataFromNetworking)
