@@ -248,10 +248,7 @@ extension JSON: Swift.ExpressibleByBooleanLiteral {
 extension JSON: Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
 	
 	public var description: String {
-		if let jsonObject = try? JSONSerialization.jsonObject(with: data(options: .prettyPrinted), options: []) {
-			return String(describing: jsonObject)
-		}
-		return ""
+		return String(describing: self.object as AnyObject).replacingOccurrences(of: ";\n", with: "\n")
 	}
 	
 	public var debugDescription: String {
