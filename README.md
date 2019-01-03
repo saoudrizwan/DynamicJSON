@@ -134,20 +134,6 @@ Convert to `Data`
 let data = json.data() // optionally specify options...
 ```
 
-## SwiftyJSON
-
-DynamicJSON is heavily inspired by SwiftyJSON but is inherently simpler to use thanks to some of Swift's newest evolutions. I've used SwiftyJSON in almost everyone of my projects, so I know how important it can be to easily manipulate JSON data especially during early stages of development. DynamicJSON simply makes the job easier.
-
-**SwiftyJSON**
-```swift
-let userName = JSON(data: dataFromNetworking)[0]["user"]["name"].string
-```
-**DynamicJSON**
-```swift
-let userName = JSON(dataFromNetworking)[0]?.user?.name?.string
-```
-The only thing DynamicJSON can't do that SwiftJSON can is [merging](https://github.com/SwiftyJSON/SwiftyJSON#merging) objects together. I personally have never needed to use this feature, however if you would like it, please let me know in an issue or feel free to create a PR.
-
 ## License
 
 DynamicJSON uses the MIT license. Please file an issue if you have any questions or if you'd like to share how you're using DynamicJSON.
