@@ -8,6 +8,9 @@
       location = "group:LICENSE">
    </FileRef>
    <FileRef
+      location = "group:DynamicJSON.podspec">
+   </FileRef>
+   <FileRef
       location = "group:DynamicJSON.xcodeproj">
    </FileRef>
 </Workspace>
