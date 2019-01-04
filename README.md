@@ -92,7 +92,7 @@ let array = json[0]?.cars?.array
 let string = json[3]?.users?[1]?.username?.string
 let nsnumber = json.creditCard?.pin?.number
 let double = json[3]?[1]?.height?.double
-let int = json[0]?.age.int
+let int = json[0]?.age?.int
 let bool = json.biography?.isHuman?.bool
 ```
 
