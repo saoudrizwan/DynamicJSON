@@ -98,9 +98,9 @@ let bool = json.biography?.isHuman?.bool
 
 Note how `JSON` doesn't actually have properties like `cars` or `users`, instead it uses dynamic member lookup to traverse through its associated JSON data to find the object you're looking for.
 
-In case you have a key that's an actual property of `JSON`, like `string` or `description` for example, just use the string subscript accessor like so:
+In case you have a key that's an actual property of `JSON`, like `number` or `description` for example, just use the string subscript accessor like so:
 ```swift
-let string = json.account?.meta?["string"]?.string
+let number = json.account?.contact?["number"]?.number
 let description = json.user?.biography?["description"]?.string
 ```
 
