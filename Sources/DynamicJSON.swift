@@ -64,10 +64,10 @@ public enum JSON {
 			self = JSON.array(array.map { JSON($0) })
 		} else if let string = object as? String {
 			self = JSON.string(string)
-		} else if let number = object as? NSNumber {
-			self = JSON.number(number)
 		} else if let bool = object as? Bool {
 			self = JSON.bool(bool)
+		} else if let number = object as? NSNumber {
+			self = JSON.number(number)
 		} else {
 			self = JSON.null
 		}
@@ -92,6 +92,10 @@ public enum JSON {
 	public var string: String? {
 		if case .string(let value) = self {
 			return value
+		} else if case .bool(let value) = self {
+			return value ? "true" : "false"
+		} else if case .number(let value) = self {
+			return value.stringValue
 		}
 		return nil
 	}
@@ -108,21 +112,11 @@ public enum JSON {
 	}
 	
 	public var double: Double? {
-		if case .number(let value) = self {
-			return value.doubleValue
-		} else if case .string(let value) = self, let doubleValue = Double(value) {
-			return doubleValue
-		}
-		return nil
+		return number?.doubleValue
 	}
 	
 	public var int: Int? {
-		if case .number(let value) = self {
-			return value.intValue
-		} else if case .string(let value) = self, let intValue = Int(value) {
-			return intValue
-		}
-		return nil
+		return number?.intValue
 	}
 	
 	public var bool: Bool? {
@@ -130,8 +124,12 @@ public enum JSON {
 			return value
 		} else if case .number(let value) = self {
 			return value.boolValue
-		} else if case .string(let value) = self {
-			return ["true", "y", "t", "yes", "1"].contains { value.caseInsensitiveCompare($0) == .orderedSame }
+		} else if case .string(let value) = self,
+			(["true", "t", "yes", "y", "1"].contains { value.caseInsensitiveCompare($0) == .orderedSame }) {
+			return true
+		} else if case .string(let value) = self,
+			(["false", "f", "no", "n", "0"].contains { value.caseInsensitiveCompare($0) == .orderedSame }) {
+			return false
 		}
 		return nil
 	}

@@ -112,6 +112,74 @@ class DynamicJSONTests: XCTestCase {
 		XCTAssert(arr1 == arr1copy)
 	}
 	
+	func test_string_conversion() {
+		XCTAssert(JSON("Hello").string == "Hello")
+		XCTAssert(JSON(true).string == "true")
+		XCTAssert(JSON(false).string == "false")
+		XCTAssert(JSON(1).string == "1")
+		XCTAssert(JSON(10.123).string == "10.123")
+		XCTAssert(JSON(2.1).string == "2.1")
+		XCTAssert(JSON([1, 2, 3]).string == nil)
+		XCTAssert(JSON(["key": "val"]).string == nil)
+	}
+	
+	func test_number_conversion() {
+		XCTAssert(JSON(1).number == 1)
+		XCTAssert(JSON(1).int == 1)
+		XCTAssert(JSON(1).double == 1)
+		XCTAssert(JSON("1").number == 1)
+		XCTAssert(JSON("1").int == 1)
+		XCTAssert(JSON("1").double == 1)
+		
+		XCTAssert(JSON(1.25).number == 1.25)
+		XCTAssert(JSON(1.25).int == 1)
+		XCTAssert(JSON(1.25).double == 1.25)
+		XCTAssert(JSON("1.25").number == 1.25)
+		XCTAssert(JSON("1.25").int == 1)
+		XCTAssert(JSON("1.25").double == 1.25)
+		
+		XCTAssert(JSON(true).number == 1)
+		XCTAssert(JSON(false).number == 0)
+	}
+	
+	func test_bool_conversion() {
+		XCTAssert(JSON(true).bool == true)
+		XCTAssert(JSON(false).bool == false)
+		XCTAssert(JSON(1).bool == true)
+		XCTAssert(JSON(0).bool == false)
+		
+		XCTAssert(JSON("true").bool == true)
+		XCTAssert(JSON("false").bool == false)
+		XCTAssert(JSON("y").bool == true)
+		XCTAssert(JSON("n").bool == false)
+		XCTAssert(JSON("t").bool == true)
+		XCTAssert(JSON("f").bool == false)
+		XCTAssert(JSON("yes").bool == true)
+		XCTAssert(JSON("no").bool == false)
+		XCTAssert(JSON("1").bool == true)
+		XCTAssert(JSON("0").bool == false)
+		
+		XCTAssert(JSON("Y").bool == true)
+		XCTAssert(JSON("N").bool == false)
+		XCTAssert(JSON("T").bool == true)
+		XCTAssert(JSON("F").bool == false)
+		XCTAssert(JSON("True").bool == true)
+		XCTAssert(JSON("FaLsE").bool == false)
+		XCTAssert(JSON("YeS").bool == true)
+		XCTAssert(JSON("nO").bool == false)
+		
+		XCTAssert(JSON("sure").bool == nil)
+	}
+	
+	func test_string_subscript_accessor() {
+		let usersData = loadMockUsersData()
+		let json = JSON(usersData)
+		XCTAssert(json[0]?["id"]?.int == 1)
+		XCTAssert(json[0]?["username"]?.string == "Bret")
+		XCTAssert(json[0]?.address?["street"]?.string == "Kulas Light")
+		XCTAssert(json[0]?.address?["geo"]?.lat?.double == -37.3159)
+	}
+	
 	// MARK: Helpers
 	
 	func loadMockUsersData() -> Data {
