@@ -14,7 +14,7 @@
   • <a href="#license">License</a>
 </p>
 
-DynamicJSON is a **dynamically typed** parser for JSON built upon the new <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0195-dynamic-member-lookup.md" target="_blank">`@dynamicMemberLookup`</a> feature introduced by Chris Lattner in Swift 4.2. This allows us to access arbitrary object members which are resolved at runtime, allowing Swift to be as flexible as JavaScript when it comes to JSON.
+DynamicJSON is a **dynamically typed** JSON parser built upon the new <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0195-dynamic-member-lookup.md" target="_blank">`@dynamicMemberLookup`</a> feature introduced by Chris Lattner in Swift 4.2. This allows us to access arbitrary object members which are resolved at runtime, allowing Swift to be as flexible as JavaScript when it comes to JSON.
 
 ### Before
 
