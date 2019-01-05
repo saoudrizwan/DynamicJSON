@@ -44,20 +44,14 @@ public enum JSON {
 	
 	// MARK: Initializers
 	
-	public init(data: Data, options: JSONSerialization.ReadingOptions = []) throws {
+	public init(data: Data, options: JSONSerialization.ReadingOptions = .allowFragments) throws {
 		let object = try JSONSerialization.jsonObject(with: data, options: options)
 		self = JSON(object)
 	}
 	
 	public init(_ object: Any) {
-		if let data = object as? Data {
-			if let converted = try? JSON(data: data) {
-				self = converted
-			} else if let fragments = try? JSON(data: data, options: .allowFragments) {
-				self = fragments
-			} else {
-				self = JSON.null
-			}
+		if let data = object as? Data, let converted = try? JSON(data: data) {
+			self = converted
 		} else if let dictionary = object as? [String: Any] {
 			self = JSON.dictionary(dictionary.mapValues { JSON($0) })
 		} else if let array = object as? [Any] {
