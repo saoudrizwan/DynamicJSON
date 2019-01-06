@@ -158,3 +158,4 @@ Contact me by email <a href="mailto:hello@saoudmr.com">hello@saoudmr.com</a>, or
 * [Paul Hudson](https://www.hackingwithswift.com/)'s wonderful literature over `@dynamicMemberLookup`
 * Chris Lattner's Swift Evolution Propsal [SE-0195](https://github.com/apple/swift-evolution/blob/master/proposals/0195-dynamic-member-lookup.md)
 * [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) for giving me a better idea of what the community wants out of a JSON parser
+* [Helge Heß](https://github.com/helje5) for helping [remove the need to use optional chaining](https://github.com/saoudrizwan/DynamicJSON/issues/4) (before v2.0.0)
