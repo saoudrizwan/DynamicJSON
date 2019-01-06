@@ -29,7 +29,7 @@ if let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []) a
 ### After
 
 ```swift
-let username = JSON(data).user?.username?.string
+let username = JSON(data).user.username.string
 ```
 
 ## Installation
@@ -88,20 +88,20 @@ Treat `JSON` objects like you're in JavaScript Land
 
 ```swift
 let dictionary = json.dictionary
-let array = json[0]?.cars?.array
-let string = json[3]?.users?[1]?.username?.string
-let nsnumber = json.creditCard?.pin?.number
-let double = json[3]?[1]?.height?.double
-let int = json[0]?.age?.int
-let bool = json.biography?.isHuman?.bool
+let array = json[0].cars.array
+let string = json[3].users[1].username.string
+let nsnumber = json.creditCard.pin.number
+let double = json[3][1].height.double
+let int = json[0].age.int
+let bool = json.biography.isHuman.bool
 ```
 
 Note how `JSON` doesn't actually have properties like `cars` or `users`, instead it uses dynamic member lookup to traverse through its associated JSON data to find the object you're looking for.
 
 In case you have a key that's an actual property of `JSON`, like `number` or `description` for example, just use the string subscript accessor like so:
 ```swift
-let number = json.account?.contact?["number"]?.number
-let description = json.user?.biography?["description"]?.string
+let number = json.account.contact["number"].number
+let description = json.user.biography["description"].string
 ```
 
 ### 3. Have fun 🤪
