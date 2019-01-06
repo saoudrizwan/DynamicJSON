@@ -37,7 +37,7 @@ let username = JSON(data).user.username.string
 -   <a href="https://guides.cocoapods.org/using/using-cocoapods.html" target="_blank">CocoaPods</a>:
 
 ```ruby
-pod 'DynamicJSON', '~> 2.0.0'
+pod 'DynamicJSON', '~> 2.0'
 ```
 *(if you run into problems, `pod repo update` and try again)*
 
@@ -90,7 +90,7 @@ Treat `JSON` objects like you're in JavaScript Land
 ```swift
 let dictionary = json.dictionary
 let array = json[0].cars.array
-let string = json[3].users[1].username.string
+let string = json.users[1].username.string
 let nsnumber = json.creditCard.pin.number
 let double = json[3][1].height.double
 let int = json[0].age.int
