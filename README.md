@@ -37,8 +37,9 @@ let username = JSON(data).user.username.string
 -   <a href="https://guides.cocoapods.org/using/using-cocoapods.html" target="_blank">CocoaPods</a>:
 
 ```ruby
-pod 'DynamicJSON'
+pod 'DynamicJSON', '~> 2.0.0'
 ```
+*(if you run into problems, `pod repo update` and try again)*
 
 -   <a href="https://github.com/Carthage/Carthage" target="_blank">Carthage</a>:
 
