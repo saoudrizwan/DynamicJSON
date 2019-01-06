@@ -21,25 +21,27 @@ public enum JSON {
 	
 	// MARK: Dynamic Member Lookup
 	
-	public subscript(index: Int) -> JSON? {
+	public subscript(dynamicMember member: String) -> JSON {
+		if case .dictionary(let dict) = self {
+			return dict[member] ?? .null
+		}
+		return .null
+	}
+	
+	// MARK: Subscript
+	
+	public subscript(index: Int) -> JSON {
 		if case .array(let arr) = self {
-			return index < arr.count ? arr[index] : nil
+			return index < arr.count ? arr[index] : .null
 		}
-		return nil
+		return .null
 	}
 	
-	public subscript(key: String) -> JSON? {
+	public subscript(key: String) -> JSON {
 		if case .dictionary(let dict) = self {
-			return dict[key]
+			return dict[key] ?? .null
 		}
-		return nil
-	}
-	
-	public subscript(dynamicMember member: String) -> JSON? {
-		if case .dictionary(let dict) = self {
-			return dict[member]
-		}
-		return nil
+		return .null
 	}
 	
 	// MARK: Initializers

@@ -35,10 +35,10 @@ class DynamicJSONTests: XCTestCase {
 	func test_data_initializer() {
 		let usersData = loadMockUsersData()
 		let json = JSON(usersData)
-		XCTAssert(json[0]?.id?.int == 1)
-		XCTAssert(json[0]?.username?.string == "Bret")
-		XCTAssert(json[0]?.address?.street?.string == "Kulas Light")
-		XCTAssert(json[0]?.address?.geo?.lat?.double == -37.3159)
+		XCTAssert(json[0].id.int == 1)
+		XCTAssert(json[0].username.string == "Bret")
+		XCTAssert(json[0].address.street.string == "Kulas Light")
+		XCTAssert(json[0].address.geo.lat.double == -37.3159)
 	}
 	
 	func test_convert_json_to_data_and_compare() {
@@ -174,10 +174,10 @@ class DynamicJSONTests: XCTestCase {
 	func test_string_subscript_accessor() {
 		let usersData = loadMockUsersData()
 		let json = JSON(usersData)
-		XCTAssert(json[0]?["id"]?.int == 1)
-		XCTAssert(json[0]?["username"]?.string == "Bret")
-		XCTAssert(json[0]?.address?["street"]?.string == "Kulas Light")
-		XCTAssert(json[0]?.address?["geo"]?.lat?.double == -37.3159)
+		XCTAssert(json[0]["id"].int == 1)
+		XCTAssert(json[0]["username"].string == "Bret")
+		XCTAssert(json[0].address["street"].string == "Kulas Light")
+		XCTAssert(json[0].address["geo"].lat.double == -37.3159)
 	}
 	
 	// MARK: Helpers
