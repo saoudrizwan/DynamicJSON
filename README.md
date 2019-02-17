@@ -47,6 +47,12 @@ pod 'DynamicJSON', '~> 2.0'
 github "saoudrizwan/DynamicJSON"
 ```
 
+-   <a href="https://swift.org/package-manager/" target="_blank">Swift Package Manager</a>:
+
+```swift
+.package(url: "https://github.com/saoudrizwan/DynamicJSON.git", from: "2.0.0")
+```
+
 -   Or drag and drop `DynamicJSON.swift` into your project.
 
 And `import DynamicJSON` in the files you'd like to use it.
