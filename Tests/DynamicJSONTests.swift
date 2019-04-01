@@ -32,6 +32,12 @@ class DynamicJSONTests: XCTestCase {
 	
 	// MARK: Tests
 	
+	func test_internal_JSON() {
+		let foo = ["foo": 3] as JSON
+		let bar = ["bar": foo] as JSON
+		XCTAssert(bar.bar.foo == 3)
+	}
+	
 	func test_data_initializer() {
 		let usersData = loadMockUsersData()
 		let json = JSON(usersData)

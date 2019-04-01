@@ -64,6 +64,8 @@ public enum JSON {
 			self = JSON.bool(bool)
 		} else if let number = object as? NSNumber {
 			self = JSON.number(number)
+		} else if let json = object as? JSON {
+			self = json
 		} else {
 			self = JSON.null
 		}
