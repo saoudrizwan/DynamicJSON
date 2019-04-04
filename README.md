@@ -4,7 +4,7 @@
 <br>
 <p align="center">
     <img src="https://user-images.githubusercontent.com/7799382/50578326-80279a00-0ded-11e9-8cfc-5cf45f70bbab.png" alt="Platform: iOS, macOS, watchOS, tvOS" />
-    <a href="https://developer.apple.com/swift" target="_blank"><img src="https://user-images.githubusercontent.com/7799382/50578324-80279a00-0ded-11e9-9526-5e548f86e500.png" alt="Language: Swift 4.2" /></a>
+    <a href="https://developer.apple.com/swift" target="_blank"><img src="https://user-images.githubusercontent.com/7799382/50578324-80279a00-0ded-11e9-9526-5e548f86e500.png" alt="Language: Swift 5.0" /></a>
     <img src="https://user-images.githubusercontent.com/7799382/50578325-80279a00-0ded-11e9-8a53-2c56bd762880.png" alt="License: MIT" />
 </p>
 
@@ -37,7 +37,7 @@ let username = JSON(data).user.username.string
 -   <a href="https://guides.cocoapods.org/using/using-cocoapods.html" target="_blank">CocoaPods</a>:
 
 ```ruby
-pod 'DynamicJSON', '~> 2.0.2'
+pod 'DynamicJSON', '~> 2.1.0'
 ```
 *(if you run into problems, `pod repo update` and try again)*
 
