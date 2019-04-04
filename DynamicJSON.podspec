@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 	s.name = "DynamicJSON"
-	s.version = "2.0.2"
+	s.version = "2.1.0"
 	s.license = { :type => "MIT", :file => "LICENSE" }
 	s.summary = "A dynamically typed JSON parser for Swift using the new @dynamicMemberLookup feature"
 	s.description  = <<-DESC
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 	s.source = { :git => "https://github.com/saoudrizwan/DynamicJSON.git", :tag => s.version }
 	s.documentation_url = "https://github.com/saoudrizwan/DynamicJSON"
   
-	s.swift_version = "4.2"
+	s.swift_version = "5.0"
 	s.ios.deployment_target = "9.0"
 	s.osx.deployment_target = "10.10"
 	s.tvos.deployment_target = "9.0"
