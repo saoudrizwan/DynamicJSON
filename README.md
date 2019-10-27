@@ -3,6 +3,7 @@
 </p>
 <br>
 <p align="center">
+<a href="https://gitroyalty.com/saoudrizwan/DynamicJSON" target="_blank"><img src="https://img.shields.io/endpoint?url=https://gitroyalty.com/saoudrizwan/DynamicJSON/badge.json" alt="GitRoyalty" /></a>
     <img src="https://user-images.githubusercontent.com/7799382/50578326-80279a00-0ded-11e9-8cfc-5cf45f70bbab.png" alt="Platform: iOS, macOS, watchOS, tvOS" />
     <a href="https://developer.apple.com/swift" target="_blank"><img src="https://user-images.githubusercontent.com/7799382/50578324-80279a00-0ded-11e9-9526-5e548f86e500.png" alt="Language: Swift 4.2" /></a>
     <img src="https://user-images.githubusercontent.com/7799382/50578325-80279a00-0ded-11e9-8a53-2c56bd762880.png" alt="License: MIT" />
@@ -34,22 +35,11 @@ let username = JSON(data).user.username.string
 
 ## Installation
 
--   <a href="https://guides.cocoapods.org/using/using-cocoapods.html" target="_blank">CocoaPods</a>:
+Support DynamicJSON's contributors with a monthly subscription on https://gitroyalty.com/saoudrizwan/DynamicJSON to install this package.
 
-```ruby
-pod 'DynamicJSON', '~> 2.0.2'
-```
-*(if you run into problems, `pod repo update` and try again)*
-
--   <a href="https://github.com/Carthage/Carthage" target="_blank">Carthage</a>:
-
-```ruby
-github "saoudrizwan/DynamicJSON"
-```
-
--   Or drag and drop `DynamicJSON.swift` into your project.
-
-And `import DynamicJSON` in the files you'd like to use it.
+[![Subscribe on GitRoyalty](https://gitroyalty.com/saoudrizwan/DynamicJSON/subscribe.svg)](https://gitroyalty.com/saoudrizwan/DynamicJSON)
+<br/>
+<sub>* comes with a 2 week free trial and can be cancelled anytime</sub>
 
 ## Usage
 
